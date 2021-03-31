@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/representative_photo"
+            android:layout_width="@dimen/profile_icon_size"
+            android:layout_height="@dimen/profile_icon_size"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:scaleType="centerCrop"
+            app:circularCutImage="@{representative.official.photoUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_profile" />
+
+        <ImageView
+            android:id="@+id/twitter_icon"
+            style="@style/web_address_icon_style"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintVertical_bias="1"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/facebook_icon"
+            style="@style/web_address_icon_style"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_facebook"
+            app:layout_constraintEnd_toStartOf="@id/twitter_icon"
+            app:layout_constraintTop_toTopOf="@id/twitter_icon"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/web_icon"
+            style="@style/web_address_icon_style"
+            android:src="@drawable/ic_www"
+            app:layout_constraintEnd_toStartOf="@id/facebook_icon"
+            app:layout_constraintTop_toTopOf="@id/twitter_icon"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{representative.office.name}"
+            android:textSize="@dimen/title_sub_header_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/representative_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="President of the United States" />
+
+        <TextView
+            android:id="@+id/representative_name"
+            style="@style/representative_list_item"
+            android:text="@{representative.official.name}"
+            app:layout_constraintEnd_toStartOf="@id/web_icon"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Joe Biden" />
+
+        <TextView
+            android:id="@+id/party_name"
+            style="@style/representative_list_item"
+            android:text="@{representative.official.party}"
+            app:layout_constraintEnd_toStartOf="@id/web_icon"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/representative_name"
+            tools:text="Democratic Party" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="representative"
+            type="com.example.android.politicalpreparedness.representative.model.Representative" />
+    </data>
+</layout>
